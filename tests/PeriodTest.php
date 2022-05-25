@@ -4,6 +4,7 @@ namespace Frugone\Simpleperiod\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Frugone\Simpleperiod\Period;
+use Frugone\Simpleperiod\TimeZone;
 use Frugone\Simpleperiod\Exception\InvalidPeriodException;
 
 class PeriodTest extends TestCase
@@ -56,8 +57,8 @@ class PeriodTest extends TestCase
         $period = Period::create('2021-11-05 18:56', '2021-11-09 13:56:39');
         $startHour = $period->startDate->format('H');
 
-        $period->timezone = Period::TZ_UTC;
-        $period->convertToTimezone(Period::TZ_UY);
+        $period->timezone = TimeZone::TZ_UTC;
+        $period->convertToTimezone(TimeZone::TZ_UY);
         $hoursDiff = $period->startDate->format('H') - $startHour;
 
         $this->assertTrue($hoursDiff == 3);
@@ -69,7 +70,7 @@ class PeriodTest extends TestCase
         $period = Period::create('2022-05-16 17:27', '2022-05-16 17:50');
         $hourUTC = $period->startDate->format('H');
 
-        $period->toTimezone(Period::TZ_UY, Period::TZ_UTC);
+        $period->toTimezone(TimeZone::TZ_UY, TimeZone::TZ_UTC);
 
         $hoursDiff = $hourUTC - $period->startDate->format('H');
 

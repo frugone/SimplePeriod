@@ -18,10 +18,6 @@ class Period
 
     public $outputFormat = 'Y-m-d H:i:s';
 
-    public const TZ_UY     = 'America/Montevideo';
-    public const TZ_ES     = 'Europe/Madrid';
-    public const TZ_UTC    = 'UTC';
-
     public function __construct(DateTime $startDate, DateTime $endDate)
     {
         if ($startDate > $endDate) {
