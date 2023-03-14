@@ -1,34 +1,38 @@
 # Period
-Clase para el manejo de periodos de tiempo.
+Class for managing time periods.
 
-Esta librería utiliza [DateTime](https://www.php.net/manual/es/class.datetime.php)
+This library uses [DateTime](https://www.php.net/manual/es/class.datetime.php)
 
-En su lugar puede utilizar [Period](https://github.com/frugone/Period) la cual utiliza 
-[Carbon](https://carbon.nesbot.com/)
+Instead you can use [Period](https://github.com/frugone/Period) which uses [Carbon](https://carbon.nesbot.com/)
 
 
-## Instalación
+## Installation
 ``` sh
 composer require frugone/simpleperiod
 ```
 
-### Periodo de fecha de dos meses
+### Two-month date period
 ```
 $period = Period::months(2);
 echo $period; // From: 2021-09-25 00:19:43, To: 2021-11-25 00:19:43 
 ```
 
-### Periodo de fecha de dos años
+### Two-yeanrs date period
 ```
 $period = Period::years(2);
 echo $period; // From: 2021-09-25 00:19:43, To: 2021-11-25 00:19:43 
 ```
 
+### Period of 3 weeks before and 2 weeks after
+```
+$period = Period::weeks(3,2);
+echo $period; // From: 2021-11-04 00:19:43, To: 2021-12-09 00:19:43 
+```
 
-### Ejemplo de utilización con Modelos mediante "Scopes"
+### Example of use with Models through "Scopes"
 
 ```
-// Listar Posts de los últimos 2 dias
+// List Posts from the last 2 days
 
 $period = Post::days(2);
 $posts = Post::active()
@@ -45,9 +49,9 @@ public function scopeByPeriod($q, $period ){
 }
 ```
 
-### Funciones útiles para crear graficas
+### Useful functions for creating graphs
 
-Si queremos graficar los valores de un mes en intervalos de 2 dias
+If we want to graph the values of a month in intervals of 2 days
 
 ```
 $period = Period::months(1);
@@ -77,7 +81,7 @@ Result:
 2021-11-24
 ```
 
-Si queremos obtener un rango de fechas en una cantidad determina de pasos, por ejemplo 7
+If we want to obtain a range of dates in a certain amount of steps, for example 7
 ```
 $range = $period->getDatePeriod(7);
 foreach( $range as $step ){
@@ -95,13 +99,7 @@ Resutl:
 2021-11-20 14:54:01
 ```
 
-### Periodo de 3 semanas anteriores y 2 posteriores
-```
-$period = Period::weeks(3,2);
-echo $period; // From: 2021-11-04 00:19:43, To: 2021-12-09 00:19:43 
-```
-
-### Perdiodo de 120 minutos en zona horaria de Uruguay
+### 120 minute period in Uruguay time zone
 ```
 $period = Period::minutes(120)->toTimezone( TimeZone::TZ_UY);
 print_r($period);
@@ -129,7 +127,7 @@ Libraries\Period Object
 )
 ```
 
-### Cambiar el formato en que se muestran las fechas
+### Change the format in which dates are displayed
 ```
 $period = Period::months(2);
 echo $period; // From: 2021-09-25 00:19:43, To: 2021-11-25 00:19:43 
@@ -139,8 +137,8 @@ echo $period; // From: 2021-09-25, To: 2021-11-25
 
 ```
 
-### Setear timezone de salida
-Timezone por defecto 
+### Set output timezone
+Default Timezone 
 ```
 $period = Period::months(2);
 print_r($period);
@@ -196,16 +194,16 @@ Libraries\Period Object
 )
 ``` 
 
-### Indicando en que timezone fueron ingresadas las fechas podemos convertir estas fechas al timezone adecuado ( por defecto UTC ) por ejemplo para realizar consultas en la db
+### Indicating in which timezone the dates were entered we can convert these dates to the appropriate timezone (by default UTC) for example to perform queries in the db
 
-Supongamos que los usuarios ingresan un rango de fechas para una busqueda,  el usuario ingresará las fechas en su zona horaria pero en la DB los datos están guardados en UTC, En este caso podemos crear el objeto Period  y convertir las fechas a UTC indicando en que timezone fueron ingresadas
+Suppose that users enter a range of dates for a search, the user will enter the dates in their time zone but in the DB the data is stored in UTC, In this case we can create the Period object and convert the dates to UTC indicating in which timezone were entered
 
-Ingreso fechas en zona horaria de Uruguay
+Enter dates in Uruguay time zone
 ``` 
 $period = Period::create( '2021-11-05 13:56', '2021-11-09 13:56:39');
 
 ```
-Convierto las fechas a UTC
+Convert dates to UTC
 ```
 $period->convertToTimezone(TimeZone::TZ_UY);
 print_r($period);
