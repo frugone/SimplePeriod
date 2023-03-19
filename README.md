@@ -3,7 +3,7 @@ Class for managing time periods.
 
 This library uses [DateTime](https://www.php.net/manual/es/class.datetime.php)
 
-Instead you can use [Period](https://github.com/frugone/Period) which uses [Carbon](https://carbon.nesbot.com/)
+Instead you can use [Period](https://github.com/pfrug/period) which uses [Carbon](https://carbon.nesbot.com/)
 
 
 ## Installation
