@@ -52,6 +52,9 @@ class PeriodTest extends TestCase
         $this->assertTrue($diff->y == 2);
     }
 
+    /**
+     * @covers ::convertToTimezone
+     */
     public function testConvertToTimezone()
     {
         $period = Period::create('2021-11-05 18:56', '2021-11-09 13:56:39');
@@ -64,6 +67,9 @@ class PeriodTest extends TestCase
         $this->assertTrue($hoursDiff == 3);
     }
 
+    /**
+     * @covers ::toTimezone
+     */
     public function testToTimezone()
     {
         // UTC -> UY
@@ -77,6 +83,9 @@ class PeriodTest extends TestCase
         $this->assertTrue($hoursDiff == 3);
     }
 
+    /**
+     * @covers ::getDatePeriodByTime
+     */
     public function testGetDatePeriodByTime()
     {
         $days = rand(5, 20);
@@ -99,9 +108,11 @@ class PeriodTest extends TestCase
         $this->assertTrue(iterator_count($range) == $rangeCount);
     }
 
+    /**
+     * @covers ::getDatePeriod
+     */
     public function testGetDatePeriod()
     {
-
         $steps = rand(1, 20);
         $period = Period::months(1);
         $range = $period->getDatePeriod($steps);
@@ -109,6 +120,9 @@ class PeriodTest extends TestCase
         $this->assertTrue(iterator_count($range) == $steps);
     }
 
+    /**
+     * @covers ::getDiffToString
+     */
     public function testGetDiffToString()
     {
         $period = Period::months(2);
@@ -118,9 +132,11 @@ class PeriodTest extends TestCase
         $this->assertTrue($period->getDiffToString() == '2 años, 24 días, 2 horas, 23 minutos');
     }
 
+    /**
+     * @covers ::limitStartDate
+     */
     public function testLimitStartDate()
     {
-
         $yesterday = new \DateTime('yesterday');
         $period = Period::days(5);
         $period->limitStartDate($yesterday);
@@ -128,6 +144,9 @@ class PeriodTest extends TestCase
         $this->assertTrue($period->startDate == $yesterday);
     }
 
+    /**
+     * @covers ::limitEndDate
+     */
     public function testLimitEndDate()
     {
         $yesterday = new \DateTime('yesterday');
@@ -137,12 +156,18 @@ class PeriodTest extends TestCase
         $this->assertTrue($period->endDate == $yesterday);
     }
 
+    /**
+     * @covers ::toArray
+     */
     public function testToArray()
     {
         $period = Period::days(5);
         $this->assertTrue(is_array($period->toArray()));
     }
 
+    /**
+     * @covers Period
+     */
     public function testException()
     {
         $this->expectException(InvalidPeriodException::class);
