@@ -1,10 +1,10 @@
 <?php
 
-namespace Frugone\Simpleperiod;
+namespace Pfrug\Simpleperiod;
 
 use DateTime;
-use Frugone\Simpleperiod\Exception\InvalidPeriodException;
-use Frugone\Simpleperiod\Helpers\StrHelper;
+use Pfrug\Simpleperiod\Exception\InvalidPeriodException;
+use Pfrug\Simpleperiod\Helpers\StrHelper;
 
 class Period
 {

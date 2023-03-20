@@ -1,6 +1,6 @@
 <?php
 
-namespace Frugone\Simpleperiod\Helpers;
+namespace Pfrug\Simpleperiod\Helpers;
 
 class StrHelper
 {

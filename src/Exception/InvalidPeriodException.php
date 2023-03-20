@@ -1,6 +1,6 @@
 <?php
 
-namespace Frugone\Simpleperiod\Exception;
+namespace Pfrug\Simpleperiod\Exception;
 
 use DateTime;
 use Exception;

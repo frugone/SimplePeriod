@@ -8,7 +8,7 @@ Instead you can use [Period](https://github.com/pfrug/period) which uses [Carbon
 
 ## Installation
 ``` sh
-composer require frugone/simpleperiod
+composer require pfrug/simpleperiod
 ```
 
 ### Two-month date period

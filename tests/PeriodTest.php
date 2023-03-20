@@ -1,11 +1,11 @@
 <?php
 
-namespace Frugone\Simpleperiod\Tests;
+namespace Pfrug\Simpleperiod\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Frugone\Simpleperiod\Period;
-use Frugone\Simpleperiod\TimeZone;
-use Frugone\Simpleperiod\Exception\InvalidPeriodException;
+use Pfrug\Simpleperiod\Period;
+use Pfrug\Simpleperiod\TimeZone;
+use Pfrug\Simpleperiod\Exception\InvalidPeriodException;
 
 class PeriodTest extends TestCase
 {

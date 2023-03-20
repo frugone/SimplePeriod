@@ -1,6 +1,6 @@
 <?php
 
-namespace Frugone\Simpleperiod;
+namespace Pfrug\Simpleperiod;
 
 class TimeZone
 {
