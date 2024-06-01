@@ -2,6 +2,9 @@
 
 namespace Pfrug\Simpleperiod;
 
+/**
+ * @package Pfrug\Simpleperiod
+ */
 class TimeZone
 {
     public const TZ_UTC = 'UTC';
@@ -676,9 +679,10 @@ class TimeZone
                     ];
 
     /**
-     * Returns a numerically indexed array containing all defined timezone identifiers per country
+     * Returns a numerically indexed array containing all defined timezone identifiers per country.
+     *
      * @param string $countryCode A two-letter ISO 3166-1 compatible country code.
-     * @return Array timeZone identifiers
+     * @return array timeZone identifiers
      */
     public static function getIdentifiersPerCountry($countryCode)
     {

@@ -2,10 +2,14 @@
 
 namespace Pfrug\Simpleperiod\Helpers;
 
+/**
+ * @package Pfrug\Simpleperiod
+ */
 class StrHelper
 {
     /**
-     * Convierte un intervalo de tiempo en un string
+     * Converts a time interval into a string.
+     *
      * @param DateInterval $interval
      * @return string
      */
